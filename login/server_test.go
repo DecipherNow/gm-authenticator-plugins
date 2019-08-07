@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/deciphernow/gm-authenticator/test"
+	"github.com/deciphernow/gm-authenticator-plugins/test"
 	"github.com/hashicorp/go-plugin"
 	. "github.com/smartystreets/goconvey/convey"
 )
