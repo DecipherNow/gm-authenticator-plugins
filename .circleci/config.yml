@@ -43,12 +43,16 @@ jobs:
   test:
     <<: *defaults
     steps:
-      - run: apk add --no-cache ca-certificates git make openssh
+      - run: apk add --no-cache ca-certificates curl git make openssh
       - run: mkdir -p ~/.ssh && ssh-keyscan -H github.com >> ~/.ssh/known_hosts
       - checkout
       - attach_workspace:
           at: /usr/local/src/gm-authenticator-plugins
+      - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > /usr/local/bin/cc-test-reporter && chmod +x /usr/local/bin/cc-test-reporter
+      - run: cc-test-reporter before-build
       - run: make test
+      - run: cc-test-reporter format-coverage -t gocov --prefix github.com/deciphernow/gm-authenticator-plugins/ ./coverage/c.out
+      - run: cc-test-reporter upload-coverage
 
 workflows:
   version: 2
