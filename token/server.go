@@ -15,18 +15,9 @@
 package token
 
 import (
-	"encoding/gob"
-
 	plugins "github.com/deciphernow/gm-authenticator-plugins"
 	"github.com/hashicorp/go-plugin"
 )
-
-func init() {
-	gob.Register(map[string]interface{}{})
-	gob.Register([]string{})
-	gob.Register(Token{})
-	gob.Register(plugin.BasicError{})
-}
 
 // Server implements the RPC server for token plugins.
 type Server struct {
