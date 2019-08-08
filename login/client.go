@@ -1,20 +1,10 @@
 package login
 
 import (
-	"encoding/gob"
 	"net/rpc"
 
 	"github.com/hashicorp/go-plugin"
 )
-
-func init() {
-	gob.Register(map[string]interface{}{})
-	gob.Register([][]string{})
-	gob.Register(Challenges{})
-	gob.Register([]Response{})
-	gob.Register(Subject{})
-	gob.Register(plugin.BasicError{})
-}
 
 // Client implements the RPC client for login plugins.
 type Client struct {

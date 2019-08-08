@@ -1,20 +1,9 @@
 package login
 
 import (
-	"encoding/gob"
-
 	plugins "github.com/deciphernow/gm-authenticator-plugins"
 	"github.com/hashicorp/go-plugin"
 )
-
-func init() {
-	gob.Register(map[string]interface{}{})
-	gob.Register([][]string{})
-	gob.Register(Challenges{})
-	gob.Register([]Response{})
-	gob.Register(Subject{})
-	gob.Register(plugin.BasicError{})
-}
 
 // Server represents the RPC server for login provider plugins, according to the
 // net/rpc requirements.
